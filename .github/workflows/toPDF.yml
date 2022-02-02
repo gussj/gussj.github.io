@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+    
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Sleep for 50 seconds
+        uses: whatnick/wait-action@master
+        with:
+          time: '50s'
+      - name: html to pdf
+        uses: misaelnieto/web_to_pdf_action@master
+        with:
+          webPageURL: https://gussj.github.io/
+          outputFile: ./cv.pdf
+          usePuppeteer: true
+          useScreen: true
+      
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ./cv.pdf
+          if [-z "$(git status --porcelain)"]; then
+             echo "::set-output name=push::false"
+          else
+             git commit -m "[bot] updated cv.pdf"
+             echo "::set-output name=push::true"
+          fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
