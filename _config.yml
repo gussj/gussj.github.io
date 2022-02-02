@@ -1,5 +1,5 @@
 # Site settings
-title: "Gustavo Speranza Resume"
+title: "Gustavo Javier Speranza Resume"
 description: "Updated resume from Gustavo Speranza"
 
 # Build settings
@@ -10,7 +10,7 @@ sass:
 
 # Resume settings
 resume_avatar:                  "true"
-resume_name:                    "Gustavo Speranza"
+resume_name:                    "Gustavo Javier Speranza"
 resume_title:                   "Cybersecurity Architect, Engineer and Delivery Manager"
 
 # used for the contact button in _layouts/resume.html
