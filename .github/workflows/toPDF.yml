@@ -13,7 +13,7 @@ jobs:
       - name: Sleep for 50 seconds
         uses: whatnick/wait-action@master
         with:
-          time: '50s'
+          time: '40s'
       - name: html to pdf
         uses: misaelnieto/web_to_pdf_action@master
         with:
